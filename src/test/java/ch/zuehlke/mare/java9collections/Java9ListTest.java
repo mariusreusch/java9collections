@@ -25,4 +25,13 @@ public class Java9ListTest {
 
         assertThatThrownBy(tryToAdd).isInstanceOf(UnsupportedOperationException.class);
     }
+
+    @Test
+    public void tryToAddNullToList_nullObject_throwsUnsupportedOperationException() {
+        Object nullIsNotAllowed = null;
+        
+        ThrowingCallable tryToAddNull = () -> List.of("Peterchen", nullIsNotAllowed);
+
+        assertThatThrownBy(tryToAddNull).isInstanceOf(NullPointerException.class);
+    }
 }
